@@ -1,7 +1,7 @@
 "use client";
-import Image from 'next/image';
+
 import { useState, useEffect } from 'react';
-import { firestore } from '@/firebase';
+import { firestore } from '../firebase';
 import {
   AppBar,
   Toolbar,
@@ -22,13 +22,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#ff8c00', // Dark orange
+      main: '#FF5722', // Updated to match the autumn color
     },
     secondary: {
-      main: '#fbe8d3', // Light peach
-    },
-    background: {
-      default: '#f5f5f5', // Light gray background
+      main: '#F5F5F5',
     },
   },
   typography: {
@@ -106,19 +103,12 @@ export default function Home() {
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          background: 'linear-gradient(135deg, #f8b400 0%, #ff6f00 100%)', // Autumn color gradient
+          background: 'linear-gradient(135deg, #FFA07A 0%, #FF4500 100%)', // Updated to an autumn color gradient
         }}
       >
         <AppBar position="static" color="primary">
           <Toolbar>
-            <Typography
-              variant="h6"
-              sx={{
-                flexGrow: 1,
-                fontWeight: 'bold',
-                color: '#fff', // Text color
-              }}
-            >
+            <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 'bold', color: '#FFFFFF' }}>
               Pantry Inventory
             </Typography>
           </Toolbar>
@@ -136,7 +126,7 @@ export default function Home() {
             <Button
               variant="contained"
               onClick={handleOpenAdd}
-              sx={{ marginBottom: '1rem', backgroundColor: '#ff8c00', color: '#fff', '&:hover': { backgroundColor: '#e07b00' } }}
+              sx={{ marginBottom: '1rem', backgroundColor: '#FF5722', color: '#FFFFFF' }}
             >
               Add New Item
             </Button>
@@ -185,13 +175,13 @@ export default function Home() {
                 />
                 <Button
                   variant="contained"
-                  sx={{ backgroundColor: '#ff8c00', color: '#fff', '&:hover': { backgroundColor: '#e07b00' } }}
                   onClick={() => {
                     addItem(itemName, itemQuantity);
                     setItemName('');
                     setItemQuantity(1);
                     handleCloseAdd();
                   }}
+                  sx={{ backgroundColor: '#FF5722', color: '#FFFFFF' }}
                 >
                   Add
                 </Button>
@@ -235,12 +225,12 @@ export default function Home() {
                 />
                 <Button
                   variant="contained"
-                  sx={{ backgroundColor: '#ff8c00', color: '#fff', '&:hover': { backgroundColor: '#e07b00' } }}
                   onClick={() => {
                     removeItem(selectedItem, itemQuantity);
                     setItemQuantity(1);
                     handleCloseRemove();
                   }}
+                  sx={{ backgroundColor: '#FF5722', color: '#FFFFFF' }}
                 >
                   Remove
                 </Button>
@@ -257,7 +247,7 @@ export default function Home() {
             {inventory.map(({ name, quantity }) => (
               <Card key={name} sx={{ minWidth: 275, maxWidth: 300, boxShadow: 3, transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
                 <CardContent>
-                  <Typography variant="h5" component="div">
+                  <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
                     {name.charAt(0).toUpperCase() + name.slice(1)}
                   </Typography>
                   <Typography variant="body2" color="textSecondary">
@@ -268,8 +258,8 @@ export default function Home() {
                   <Button
                     size="small"
                     variant="contained"
-                    sx={{ backgroundColor: '#ff8c00', color: '#fff', '&:hover': { backgroundColor: '#e07b00' } }}
                     onClick={() => handleOpenRemove(name)}
+                    sx={{ backgroundColor: '#FF5722', color: '#FFFFFF' }}
                   >
                     Remove
                   </Button>
