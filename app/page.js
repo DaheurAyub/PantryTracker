@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { firestore } from '../firebase';
+import { firestore } from '@/firebase';
 import {
   AppBar,
   Toolbar,
